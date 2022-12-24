@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="D:\Програмирование\moysayt\font-awesome-4.7.0\css\font-awesome.css">
+    <link rel="shortcut icon" href="D:\Програмирование\moysayt\favicon_io (1)\favicon.ico" type="image/x-icon">  
+    <title>Minecraftni Yuklab Olish</title>
+    <style>
+        *{
+          box-sizing: border-box;
+          margin: 0;
+        }
+        body{
+          padding: 0;
+          font-family: papyrus;
+          font-weight: bold;
+          background-color: #f1f1f1;
+          padding: 10px;
+           
+        }
+        /* header */
+        .header{
+          background-image: url(minic.jpg);
+          background-size: 100% 100%;
+          padding: 10px;
+          text-align: center;
+          height: 400px;
+        }
+
+        .header h1{
+          font-size: 50px;
+          clear: both;
+        }
+        .header p{font-size: 30px;}
+
+        .header a img{
+          float: left;
+          width: 50px;
+          transition: all 2s;
+        }
+
+        .header a img:hover{
+          transform: rotate(360deg);
+        }
+
+        .til{
+          position: absolute;
+          right: 15%;
+          top: 35px;
+        }
+
+        .header #a{
+          text-decoration: none;
+          float: right;
+          background-color: rgba(68, 68, 68,0.2);
+          padding: 15px;
+          color: wheat;
+          font-size: 20px;
+          border-radius: 10%;
+          transition: all 2s;
+        }
+
+        .header #a i{
+          font-size: 25px;
+          position: relative;
+          top: 4px;
+          right: 6px;
+          transition: all 1s;
+        }
+        
+        .header #a:hover{
+          background-color: #666;
+          border-radius: 50%;
+        }
+
+        .header #a:hover i{
+          font-size: 30px;
+        }
+
+        /* menu konteyner */
+        .navbar{
+          background-color: #666;            
+          overflow: absolute;
+          list-style: none;             
+          padding: 0;
+          margin: 0;
+          position: sticky;                      
+          top: 0;
+          height: 70px;
+        }
+
+        /* ro'yxatni xammasi chapga ketadi */
+        .navbar li{
+          float: left;                  
+        }
+        /* menu silka ( a ) */
+        .navbar li a{
+          display: inline-block;        
+          color: white;
+          padding: 15px 25px;       
+          text-decoration: none;
+          text-transform: capitalize;
+          font-size: 20px;
+          border-radius: 20px/100px;     
+         transition: all 2s;
+        }
+        /* uy */
+        .activ{
+            background-color: green;
+            text-align: center;
+            width: 50px;
+            height: 70px;
+        }
+
+        /* ikon */                 
+        .navbar a i,.dropBtn i{
+          font-size: 30px;
+          position: relative;
+          top: 5px;
+          right: 15px;  
+          transition: all 2s;
+        }
+        /* :hover silkaga ( a ) */
+        .navbar a:hover{
+          background-color: black;
+          color: greenyellow;
+
+        }
+        /* :focus silkaga ( a ) */
+        .navbar a:focus{
+          background-color: black;
+          color: greenyellow;
+        }
+
+        .navbar a:hover i,.dropBtn:hover i{
+          transform: rotate(360deg);
+          color: teal;
+        }
+
+        /* ochiladigan menu conteyner */                        
+        .drop{
+          background-color: #444;
+         border: 2px solid green; 
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          position: absolute;
+          top: 60px;
+          width: 190px;
+          display: none;
+          left: 3%;
+        }
+
+        /* ochiladigan menu ro'yxat */
+        .drop li{                       
+          border: 2px solid white; 
+          width: 100%;
+        }
+
+        /* ochiladigan menu silka */
+        .drop li a{                     
+          border: 2px solid #b8b1b1;
+          width: 100%;
+          border-radius: 0;
+          border-bottom: none;
+        }
+
+        /* mishkani keltirgan payt menu ko'rimadi */
+       .navbar li:hover .drop{         
+        display: block;
+        }
+
+     
+      
+        .dropBtn{
+            padding: 18px;
+            background: none;
+            cursor: pointer;
+            transition: all 2s;
+            color: white;
+            font-size: 30px;
+            border: none;
+        }
+
+        .dropBtn:hover{
+          background-color: black;
+          color: greenyellow;
+          border-radius: 20%;
+        }
+
+        .dropContent{
+          display: none;
+          position: absolute;
+          left: 210px;
+          width: 100px;
+          text-align: center;
+          border-radius: 10%;
+        }
+
+
+        .dropContent a{
+            text-decoration: none;
+            padding: 5px 0;
+            color: white;
+            display: block;
+            transition: all 1s;
+            background-color: #666;
+        }
+
+        .show
+        {
+          display: block;
+          transition: all 2s;
+        }
+          
+
+        /* input */                       
+        .navbar input[type="text"]{
+          padding: 10px;
+          width: 380px;
+          border: 0;
+          font-size: 15px;
+        }
+        /* buuton */                      
+        .navbar form button{
+          padding: 6px 10px;
+          margin-top: 8px;
+          margin-right: 16px;
+          background-color: #ddd;
+          font-size: 20px;
+          border: none;
+          cursor: pointer;
+        }
+
+        @media only screen and (max-width: 768px)  {
+          [class*="navbar"]{
+            display: block;
+          }
+        }
+
+        /* form */                        
+        form{
+          float: right;
+          margin-top: 8px;
+        }
+        /* buuton :hover */               
+        .navbar form button:hover{
+          background-color: #bbbbbb;
+        }
+
+        /* input focus */                 
+        .navbar form input:focus{
+          outline: 2px solid greenyellow;
+        }
+        
+        /* content  */
+        .content {   
+          float: right ;
+          width: 75%;
+        }
+
+        /* o'ng tomon content */
+        .content_side {
+          float: left;
+          width: 25%;
+          background-color: #f1f1f1;
+          padding-left: 20px;
+        }
+
+        /* rasm */
+        .img {
+          background-color: #aaa;
+          width: 100%;
+          padding: 20px;
+        }
+
+        /* Maqolalar uchun karta effektini qo'shamiz */
+        .card {
+          background-color: white;
+          padding: 20px;
+          margin-top: 20px;
+          text-align: center;
+        }
+
+        .content_side .card{
+          box-shadow: -2px 5px 5px blueviolet;
+        }
+
+        .content_side .card .img:hover{
+          box-shadow: -3px 5px 5px blue;
+          cursor: pointer;
+        }
+
+        /* floatni o'chirish */
+        .container:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        .yu
+        {
+          text-align: center;
+          margin-top: 10%;
+          background-color: black;
+          color: white;
+          margin: 7%;
+        }
+
+        .q
+        {
+          border-radius:  22px 22px  1px  1px ;
+        }
+        
+        .w
+        {
+          border-radius: 1px  1px   22px 22px  ;
+        }
+
+
+        .dowlands
+        {
+          text-decoration: none;
+          color: black;
+          border: none;
+          background-color: green;
+          border-radius: 11px  11px  11px 11px ;
+          
+        }
+        .tg
+        {
+          width: 5%;
+          top: 6%;
+          text-decoration: none;
+          text-align: center;
+          margin-top: 2%;
+        }
+        .dowland
+        {
+          text-decoration: none;
+          color: black;
+          border: none;
+          background-color: green;
+          border-radius: 11px  11px   11px 11px  ;
+        }
+
+
+
+
+        /* podval */
+        .footer {
+          background: #ddd;
+          padding: 5px;
+          text-align: center;
+          height: 100px;          
+          margin-top: 20px;
+          font-size: 31px;
+          color: white;
+          background-color: gray ;
+        }
+</style>
+</head>
+<body>
+    <div class="header">
+        <a href="RUS.html">
+          <img src="D:\Програмирование\moysayt\favicon_io (1)\apple-touch-icon.png" alt="icon">
+        </a>
+
+
+ <!-- <a id="a" href="D:\Програмирование\moysayt\login\login.html"><i class="fa fa-address-card"></i>Вход</a>-->
+       <div><i><h1 class="yu">Yuklab oling va o'ynang</h1></i></div>
+
+        <p><a class="dowlands" href="https://tlauncher.org/installer" target="_blank">Minecraft uchun Tlauncher-ni yuklab oling!</a></p>
+        <p><a class="dowland" href="https://www.java.com/ru/download/manual.jsp" target="_blank">Tlauncher uchun Java-ni yuklab oling (Minecraft u holda ishlamaydi!)</a></p>
+
+      </div>
+
+
+      <ul class="navbar">    
+              <li><a class="activ" href="#"><i class="fa fa-home" aria-hidden="true"></i>
+              <li><a href="#"><i class="fa-regular fa-gamepad-modern"></i>O'yinlar
+              <span class="down">&#x25bc</span></a> 
+              <ul class="drop">         
+                <li><a href="https://ru.ldplayer.net/games/garena-free-fire-on-pc.html">Free Fire</a></li>
+                <li><a href="https://gta.com.ua/gta5-pc-downloads.phtml">Gta 5</a></li>
+                <li><a href="https://ru.ldplayer.net/games/brawl-stars-on-pc.html">Brawl Starst</a></li>
+ <!--               <li><a style="border-bottom: 2px solid red;" href="RUS.html" target="_blank">Tlauncher для майнкрафт</a> </li>-->
+                </ul> 
+               </li>   
+               
+                  <button onclick="myFunction()" class="dropBtn"><i class="fa fa-globe"></i>Tillar<span>&#x25bc</span></a></button>
+                  <div id="drop" class="dropContent">
+                      <a class="q" href="RUS.html">RUS</a>
+                      <a class="w" href="ENG.html">EN</a>
+                
+                
+                  <!--   <form>
+                   <input type="text" placeholder="поиск"> 
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>-->
+              </div>
+          
+        </ul>
+          
+    <div class="container">
+        <div class="content">
+          <div class="card">
+            <h1>Minecraft</h1>
+            <div class="img"><img src="1537559470_1511822798_minecraft.jpg" height="50%" width="100%"></div>
+          </div>
+          <div class="card">
+            <div class="img"><div class="img"><img src="images.jpg" height="50%" width="100%"></div>
+          </div>
+          </div>
+        </div>
+        <div class="content_side">
+          <div class="card">
+            <h1>Brawl Stars</h1>
+            <div class="img"><a href="https://ru.ldplayer.net/games/brawl-stars-on-pc.html"><img src="8a92629d4fe834c9f38dd49525ede39f.jpg " width="100%" height="200px"></a></div>
+            
+          </div>
+          <div class="card">
+            <h1>Free Fire</h1>
+            <div class="img"><a href="https://ru.ldplayer.net/games/garena-free-fire-on-pc.html"><p><img src="wallpapersden.com_garena-free-fire-explosion_2932x2932.jpg" width="100%" height="1%"></p></a></div>
+            
+          </div>
+           
+          </div>
+          <div class="card">
+            <h1>Gta5</h1>
+            <div class="img"><a href="https://gta.com.ua/gta5-pc-downloads.phtml"><p><img src="UVe3fwocKzYxxRCY3HVHXQ.jpeg" width="20%" height="2%"></p></a></div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="footer" id="footer">
+        <a  href="https://t.me/CruSerFamely"><img class="tg" src="p1_3294318_5506f251.png" alt=""></a>
+      </div>
+
+      <script>
+        function myFunction() {
+            document.getElementById("drop").classList.toggle("show");
+        }
+
+          window.onclick = function(event) {
+              if (!event.target.matches('.dropBtn')) {
+                  var btn = document.getElementsByClassName("dropContent");
+                  var i;
+                  for (i = 0; i < btn.length; i++) {
+                      var openBtn = btn[i];
+                      if (openBtn.classList.contains("show")) {
+                          btn.classList.remove("show");
+                      }
+                  }
+              }
+        }
+
+      </script>
+      
+</body>
+</html>
